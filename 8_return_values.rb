@@ -45,9 +45,10 @@ end
 def mean(list_of_numbers)
   # Let's re-use the work we did above in the sum method
 
-  # ====================
-  # Your code goes here.
-  # ====================
+  sum_of_numbers = sum(list_of_numbers)
+  count = list_of_numbers.length
+
+  return sum_of_numbers/count.to_f
 end
 
 # VARIANCE
@@ -62,9 +63,14 @@ end
 def variance(list_of_numbers)
   # Let's re-use the work we did above in the mean method
 
-  # ====================
-  # Your code goes here.
-  # ====================
+  mean_of_list = mean(list_of_numbers)
+  sum_of_squared_diff = 0
+
+  list_of_numbers.each do |number|
+    sum_of_squared_diff = sum_of_squared_diff + (number - mean_of_list)**2
+  end
+
+  return sum_of_squared_diff/list_of_numbers.length.to_f
 end
 
 # STANDARD DEVIATION
@@ -73,18 +79,24 @@ end
 #  - take the square root of the variance
 
 def standard_deviation(list_of_numbers)
-  # ====================
-  # Your code goes here.
-  # ====================
+  var = variance(list_of_numbers)
+  return Math.sqrt(var)
 end
 
 
 # Finally, everything above allows us to do:
 
-# first_dataset = [93, 65, 87, 68, 2, 64, 36, 96, 45, 47]
-# stdev1 = standard_deviation(first_dataset)
-# puts "The standard deviation of the first dataset is #{stdev1.round(2)}."
+first_dataset = [93, 65, 87, 68, 2, 64, 36, 96, 45, 47]
+puts sum(first_dataset)
+puts mean(first_dataset)
+puts variance(first_dataset)
+array = [1,2,3,4,5]
+puts sum(array)
+puts mean(array)
+puts variance(array)
+stdev1 = standard_deviation(first_dataset)
+puts "The standard deviation of the first dataset is #{stdev1.round(2)}."
 
-# second_dataset = [2, 9, 405, 562, 740, 133, 346, 509, 21, 93]
-# stdev2 = standard_deviation(second_dataset)
-# puts "The standard deviation of the second dataset is #{stdev2.round(2)}."
+second_dataset = [2, 9, 405, 562, 740, 133, 346, 509, 21, 93]
+stdev2 = standard_deviation(second_dataset)
+puts "The standard deviation of the second dataset is #{stdev2.round(2)}."
