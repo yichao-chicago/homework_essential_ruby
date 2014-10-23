@@ -15,8 +15,10 @@
 
 def pmt(rate, nper, pv)
   # =========================================================
-  # Your code to implement the method goes here.
-  # You shouldn't have to write or change code anywhere else.
+  numerator = pv * rate *(1+rate)**nper
+  denominator =(1 + rate)**nper-1
+
+  return numerator / denominator
   # =========================================================
 end
 
